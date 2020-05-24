@@ -9,7 +9,6 @@
 #include "ParamedicCommander.hpp"
 
 
-class Test {
     static WarGame::Board fillBoard(){
         WarGame::Board board(10,10);
 
@@ -48,8 +47,8 @@ class Test {
                 CHECK(typeid(board[{4,0}]) == typeid(ParamedicCommander));
     }
 
-};
 
+   
 
 
 
