@@ -1,11 +1,13 @@
 #include "doctest.h"
-#include "Board.hpp"
+#include "DemoGame.hpp"
 #include "FootSoldier.hpp"
 #include "FootCommander.hpp"
 #include "Sniper.hpp"
 #include "SniperCommander.hpp"
 #include "Paramedic.hpp"
 #include "ParamedicCommander.hpp"
+#include "Soldier.hpp"
+
 
 
      WarGame::Board fillBoard(){
@@ -145,7 +147,7 @@ static WarGame::Board fillBoard2(){
 }
 
 
-TEST_CASE("Check add Solider 2") {
+TEST_CASE("Check add Solider 2") {  //15
     WarGame::Board board = fillBoard();
             CHECK(board.has_soldiers(1));
             CHECK(board.has_soldiers(2));
@@ -164,7 +166,7 @@ TEST_CASE("Check add Solider 2") {
 }
 
 
-TEST_CASE("Move function"){
+TEST_CASE("Move function"){  //18
     WarGame::Board board = fillBoard();
     board.move(1,{9,1},WarGame::Board::Down);
             CHECK(board[{9,1}]== nullptr);
@@ -197,7 +199,7 @@ TEST_CASE("Move function"){
             CHECK(board[{8,2}]->get_max_health()==120);
 }
 
-TEST_CASE(" Exceptions ") {
+TEST_CASE(" Exceptions ") { //11
     WarGame::Board board = fillBoard();
     //Out of range
             CHECK_THROWS(board.move(2, {0, 2}, WarGame::Board::Down));
@@ -212,6 +214,7 @@ TEST_CASE(" Exceptions ") {
             CHECK_THROWS(board.move(1, {6, 1}, WarGame::Board::Right));
             CHECK_THROWS(board.move(2, {6, 2}, WarGame::Board::Left));
             CHECK_THROWS(board.move(1, {8, 5}, WarGame::Board::Left));
+            CHECK_THROWS(board.move(1, {8, 4}, WarGame::Board::Right));
             CHECK_THROWS(board.move(1, {8, 4}, WarGame::Board::Right));
 
 }
