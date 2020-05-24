@@ -1,11 +1,8 @@
 /**
  * Header file for the board of the war game.
- * 
- * You can copy this file to a new file called Board.hpp, and extend it as you like.
- * 
- * @author Oz Levi 
+ *
+ * @author Oz Levi
  * @author Erel Segal-Halevi
- * @author Netanel Albert
  * @since  2020-05
  */
 
@@ -47,6 +44,8 @@ namespace WarGame {
 
         // returns true iff the board contains one or more soldiers of the given player.
         bool has_soldiers(uint player_number) const;
+
+        std::vector<std::vector<Soldier*>> get_board() { return board;}
     };
 
 }

@@ -2,4 +2,4 @@
 // Created by shani on 24/05/2020.
 //
 
-#include "FootSoldier.hpp"
+#include "Soldier.hpp"
