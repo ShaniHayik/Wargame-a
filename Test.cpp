@@ -41,10 +41,10 @@ class Test {
                 CHECK(typeid(board[{0,3}]) == typeid(Sniper));
                 CHECK(typeid(board[{0,2}]) == typeid(Sniper));
                 CHECK(typeid(board[{2,1}]) == typeid(SniperCommander));
-                CHECK(typeid(board[{0,3}]) == typeid(SniperCommander));
-                CHECK(typeid(board[{5,1}]) == typeid(Paramedic));
-                CHECK(typeid(board[{1,3}]) == typeid(Paramedic));
-                CHECK(typeid(board[{4,5}]) == typeid(ParamedicCommander));
+                CHECK(typeid(board[{5,3}]) == typeid(SniperCommander));
+                CHECK(typeid(board[{8,4}]) == typeid(Paramedic));
+                CHECK(typeid(board[{8,3}]) == typeid(Paramedic));
+                CHECK(typeid(board[{6,5}]) == typeid(ParamedicCommander));
                 CHECK(typeid(board[{4,0}]) == typeid(ParamedicCommander));
     }
 
