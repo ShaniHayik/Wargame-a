@@ -6,7 +6,7 @@
 #include "SniperCommander.hpp"
 #include "Paramedic.hpp"
 #include "ParamedicCommander.hpp"
-#include "Soldier.hpp"
+#include "Solider.hpp"
 
 
 
