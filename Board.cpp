@@ -1,20 +1,21 @@
 
 #include "Board.hpp"
+#include "Soldier.hpp"
 #include <iostream>
 using namespace std;
 
 namespace WarGame {
 
-    Solider*& Board::operator[](pair<int,int> location) {
+    Soldier*& Board::operator[](pair<int,int> location) {
         return board[location.first][location.second];
     }
 
-    Solider* Board::operator[](pair<int,int> location) const {
+    Soldier* Board::operator[](pair<int,int> location) const {
         return board[location.first][location.second];
     }
 
     void Board::move(uint player_number, pair<int,int> source, MoveDIR direction) {
-        Solider* s = (*this)[source];
+        Soldier* s = (*this)[source];
         if(s==nullptr || s->get_player_number() != player_number)
             throw invalid_argument("Illegal argument");
         pair<int, int> target;
@@ -43,7 +44,7 @@ namespace WarGame {
     bool Board::has_soldiers(uint player_number) const {
         for(int i= 0; i< board.size(); ++i){
             for(int j=0; j< board[i].size(); ++j) {
-                Solider* s = (*this)[{i, j}];
+                Soldier* s = (*this)[{i, j}];
                 if (s != nullptr && s->get_player_number() == player_number)
                     return true;
             }

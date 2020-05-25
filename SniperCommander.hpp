@@ -1,13 +1,13 @@
 #pragma once
-#include "Solider.hpp"
+#include "Soldier.hpp"
 using namespace std;
 
-class SniperCommander : public Solider {
+class SniperCommander : public Soldier {
     public:
     SniperCommander (int solider_number) :
-            Solider(120, -100, solider_number,120){}
+            Soldier(120, -100, solider_number,120){}
 
-        void playS (std::vector<std::vector<Solider*>> &board, pair<int,int> location) override{}
+        void playS (std::vector<std::vector<Soldier*>> &board, pair<int,int> location) override{}
 
 };
 

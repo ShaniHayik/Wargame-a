@@ -1,5 +1,8 @@
+
 /**
  * Header file for the board of the war game.
+ *
+ * You can copy this file to a new file called Board.hpp, and extend it as you like.
  *
  * @author Oz Levi
  * @author Erel Segal-Halevi
@@ -9,25 +12,25 @@
 #include <string>
 #include <vector>
 #include <stdexcept>
-#include "Solider.hpp"
+#include "Soldier.hpp"
 
 
 namespace WarGame {
 
     class Board {
     private:
-        std::vector<std::vector<Solider*>> board;
+        std::vector<std::vector<Soldier*>> board;
     public:
         enum MoveDIR { Up, Down, Right, Left };
 
         Board(uint numRows, uint numCols) :
-                board(numRows, std::vector<Solider*>(numCols, nullptr)) {}
+                board(numRows, std::vector<Soldier*>(numCols, nullptr)) {}
 
         // operator for putting soldiers on the game-board during initialization.
-        Solider*& operator[](std::pair<int,int> location);
+        Soldier*& operator[](std::pair<int,int> location);
 
         // operator for reading which soldiers are on the game-board.
-        Solider* operator[](std::pair<int,int> location) const;
+        Soldier* operator[](std::pair<int,int> location) const;
 
         // The function "move" tries to move the soldier of player "player"
         //     from the "source" location to the "target" location,
@@ -45,7 +48,10 @@ namespace WarGame {
         // returns true iff the board contains one or more soldiers of the given player.
         bool has_soldiers(uint player_number) const;
 
-        std::vector<std::vector<Solider*>> get_board() { return board;}
+        ~Board()
+        {
+            board.clear();
+        }
     };
 
 }

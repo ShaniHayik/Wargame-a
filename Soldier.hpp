@@ -8,13 +8,13 @@ using namespace std;
 class Soldier {
 
     private:
-        int max_health;
-        int demage;
-        int player_number;
-        int current_health;
+        uint max_health;
+        uint demage;
+        uint player_number;
+        uint current_health;
 
     public:
-    Soldier (int max_health, int demage, int player_number, int current_health) :
+    Soldier (uint max_health, uint demage, uint player_number, uint current_health) :
         max_health(max_health),
         demage(demage),
         player_number(player_number),
@@ -59,8 +59,6 @@ class Soldier {
         int get_player_number() {
             return this->player_number;
         }
-
-
 
 
 };
