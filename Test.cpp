@@ -34,6 +34,7 @@
         WarGame::Board board = fillBoard();
                 CHECK(board.has_soldiers(1));
                 CHECK(board.has_soldiers(2));
+
                 CHECK(typeid(board[{9,1}]) == typeid(FootSoldier));
                 CHECK(typeid(board[{9,2}]) == typeid(FootSoldier));
                 CHECK(typeid(board[{2,5}]) == typeid(FootCommander));
@@ -113,7 +114,7 @@ TEST_CASE("Check Health") {  //13
     CHECK(board[{8,4}]->get_max_health()==100);
     CHECK(board[{9,2}]->get_max_health()==100);
     CHECK(board[{9,1}]->get_max_health()==100);
-    
+
 
     board.move(2,{9,2},WarGame::Board::Up);
     CHECK(board[{8,3}]->get_current_health()==100);
@@ -216,5 +217,70 @@ TEST_CASE(" Exceptions ") { //11
             CHECK_THROWS(board.move(1, {8, 5}, WarGame::Board::Left));
             CHECK_THROWS(board.move(1, {8, 4}, WarGame::Board::Right));
             CHECK_THROWS(board.move(1, {8, 4}, WarGame::Board::Right));
+
+
+
+
+
+}
+
+
+WarGame::Board fillBoard3(){
+    WarGame::Board board2(10,10);
+
+    board2[{0,3}]= new Sniper(1);
+    board2[{0,2}]= new Sniper(2);
+    board2[{9,1}]= new FootSoldier(3);
+    board2[{9,2}]= new FootSoldier(4);
+    board2[{6,5}]= new ParamedicCommander(5);
+    board2[{4,0}]= new ParamedicCommander(6);
+    board2[{2,5}]= new FootCommander(7);
+    board2[{2,4}]= new FootCommander(8);
+    board2[{2,1}]= new SniperCommander(9);
+    board2[{5,3}]= new SniperCommander(10);
+    board2[{8,4}]= new Paramedic(11);
+    board2[{8,3}]= new Paramedic(12);
+
+    board2[{1,3}]= new Sniper(13);
+    board2[{3,2}]= new Sniper(14);
+    board2[{9,1}]= new FootSoldier(15);
+    board2[{8,2}]= new FootSoldier(16);
+    board2[{5,5}]= new ParamedicCommander(17);
+    board2[{2,0}]= new ParamedicCommander(18);
+    board2[{1,5}]= new FootCommander(19);
+    board2[{4,4}]= new FootCommander(20);
+    board2[{2,2}]= new SniperCommander(21);
+    board2[{4,3}]= new SniperCommander(22);
+    board2[{9,4}]= new Paramedic(23);
+    board2[{9,3}]= new Paramedic(24);
+
+    return board2;
+}
+
+TEST_CASE("Add Check") {
+    WarGame::Board board2 = fillBoard3();
+            CHECK(board2.has_soldiers(1));
+            CHECK(board2.has_soldiers(2));
+            CHECK(board2.has_soldiers(3));
+            CHECK(board2.has_soldiers(4));
+            CHECK(board2.has_soldiers(5));
+            CHECK(board2.has_soldiers(6));
+            CHECK(board2.has_soldiers(7));
+            CHECK(board2.has_soldiers(8));
+            CHECK(board2.has_soldiers(9));
+            CHECK(board2.has_soldiers(10));
+            CHECK(board2.has_soldiers(11));
+            CHECK(board2.has_soldiers(12));
+            CHECK(board2.has_soldiers(13));
+            CHECK(board2.has_soldiers(14));
+            CHECK(board2.has_soldiers(15));
+            CHECK(board2.has_soldiers(16));
+            CHECK(board2.has_soldiers(17));
+            CHECK(board2.has_soldiers(18));
+            CHECK(board2.has_soldiers(19));
+            CHECK(board2.has_soldiers(20));
+            CHECK(board2.has_soldiers(21));
+            CHECK(board2.has_soldiers(22));
+            CHECK(board2.has_soldiers(23));
 
 }
