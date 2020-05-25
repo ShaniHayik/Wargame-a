@@ -1,45 +1,48 @@
-
 #include "Board.hpp"
-#include "Soldier.hpp"
 #include <iostream>
 using namespace std;
 
 namespace WarGame {
 
-    Soldier*& Board::operator[](pair<int,int> location) {
+    Soldier *&Board::operator[](pair<int, int> location) {
         return board[location.first][location.second];
     }
 
-    Soldier* Board::operator[](pair<int,int> location) const {
+    Soldier *Board::operator[](pair<int, int> location) const {
         return board[location.first][location.second];
     }
 
-    void Board::move(uint player_number, pair<int,int> source, MoveDIR direction) {
-        Soldier* s = (*this)[source];
-        if(s==nullptr || s->get_player_number() != player_number)
-            throw invalid_argument("Illegal argument");
-        pair<int, int> target;
-        switch (direction)
-        {
-            case Up:
-                target= make_pair(source.first+1, source.second);
-                break;
-            case Down:
-                target= make_pair(source.first-1, source.second);
-                break;
-            case Left:
-                target= make_pair(source.first, source.second-1);
-                break;
-            case Right:
-                target= make_pair(source.first, source.second+1);
-                break;
+    void Board::move(uint player_number, pair<int, int> source, MoveDIR direction) {
+        Soldier *solider = (*this)[source];
+        pair<int, int> new_place;
+
+        if (solider==nullptr || solider->get_player_number() != player_number)
+            throw invalid_argument(" player number not found ");
+
+        if (direction == Up) {
+            new_place = make_pair(source.first + 1, source.second);
         }
-        if(target.first >= board.size() || target.first < 0 || target.second >= board.size() || target.second < 0)
+
+        if (direction == Left) {
+            new_place = make_pair(source.first, source.second - 1);
+        }
+
+        if (direction == Right) {
+            new_place = make_pair(source.first, source.second + 1);
+        }
+        if (direction == Down) {
+            new_place = make_pair(source.first - 1, source.second);
+        }
+
+        else if (new_place.first >= board.size() || new_place.first < 0 || new_place.second >= board.size() || new_place.second < 0)
             throw invalid_argument("Outside of the board");	(*this)[source] = nullptr;
-        (*this)[target] = s;
-        std::cout<< "my target is (" << target.first << "," << target.second << ")" << endl;
-        s->playS(board, target);
+
+
+        (*this)[source] = nullptr;
+        (*this)[new_place] = solider;
+        solider->playS(board, new_place);
     }
+    
 
     bool Board::has_soldiers(uint player_number) const {
         for(int i= 0; i< board.size(); ++i){
@@ -52,6 +55,4 @@ namespace WarGame {
         return false;
     }
 
-
 }
-
